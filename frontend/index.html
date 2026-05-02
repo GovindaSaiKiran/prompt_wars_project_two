@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicGuide | Professional Election Education Platform</title>
+    <meta name="description" content="Master the art of democracy. Learn how to apply for voter ID, understand the voting process, and interact with our AI assistant.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Accents -->
+    <div class="glow-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo" id="nav-logo">
+                <i class="fa-solid fa-landmark-flag"></i>
+                <span>Civic<span>Guide</span></span>
+            </div>
+            <ul class="nav-links" role="navigation" aria-label="Main Navigation">
+                <li><a href="#hero">Start</a></li>
+                <li><a href="#videos">Learn</a></li>
+                <li><a href="#apply">Apply</a></li>
+                <li><a href="#simulator">Check</a></li>
+                <li><a href="#eci">Vote</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-ai" id="openChatBtn" aria-label="Open AI Assistant Chat" tabindex="0">
+                    <i class="fa-solid fa-robot" aria-hidden="true"></i>
+                    <span>Ask AI</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge animate-fade-in">Elections 2024 • Live Intelligence</div>
+            <h1 class="animate-slide-up">Master Your <span>Democratic</span> Rights</h1>
+            <p class="animate-slide-up">The premium SaaS-style platform designed to guide every Indian citizen through the voter registration and voting process with AI-powered clarity.</p>
+            
+            <!-- Guided Entry Flow -->
+            <div class="guided-entry animate-slide-up">
+                <button class="guide-btn" id="guide-vote" data-target="#videos" data-prompt="How does the voting process work in India?">
+                    <div class="btn-icon"><i class="fa-solid fa-check-to-slot"></i></div>
+                    <span>Learn How to Vote</span>
+                </button>
+                <button class="guide-btn" id="guide-apply" data-target="#apply" data-prompt="Explain voter registration process in India.">
+                    <div class="btn-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <span>Apply for Voter ID</span>
+                </button>
+                <button class="guide-btn" id="guide-eligibility" data-target="#form6-guide" data-prompt="What is the eligibility for voting in India?" aria-label="Check Eligibility Guide">
+                    <div class="btn-icon"><i class="fa-solid fa-user-check" aria-hidden="true"></i></div>
+                    <span>Check Eligibility</span>
+                </button>
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Election+Day+Reminder&details=Remember+to+cast+your+vote!+Check+your+polling+booth+and+carry+your+Voter+ID.&dates=20240501T090000Z/20240501T180000Z" target="_blank" class="guide-btn" style="text-decoration: none;" aria-label="Add Election Reminder to Google Calendar" tabindex="0">
+                    <div class="btn-icon"><i class="fa-solid fa-calendar-plus" aria-hidden="true"></i></div>
+                    <span>Add Reminder</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="glass-card main-stat animate-float">
+                <div class="stat-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                <div class="stat-info">
+                    <h3>968 Million</h3>
+                    <p>Total Registered Voters</p>
+                </div>
+            </div>
+            <div class="glass-card sub-stat animate-float-delayed">
+                <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="stat-info">
+                    <h3>Secure & Fair</h3>
+                    <p>ECI Verified Protocols</p>
+                </div>
+            </div>
+            <div class="hero-main-icon">
+                <i class="fa-solid fa-fingerprint"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- How to Apply Section -->
+    <section id="apply" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Registration Process</span>
+                <h2>Voter Registration <span>Simplified</span></h2>
+                <p>Everything you need to know about Form 6 and your entry into the Electoral Roll.</p>
+            </div>
+
+            <!-- Form-6 Guide (PPT Content UI) -->
+            <div class="guide-container" id="form6-guide">
+                <div class="guide-grid">
+                    <!-- Eligibility -->
+                    <div class="glass-card guide-card">
+                        <div class="card-icon"><i class="fa-solid fa-id-badge"></i></div>
+                        <h3>Eligibility Criteria</h3>
+                        <ul class="guide-list">
+                            <li><i class="fa-solid fa-check"></i> Age ≥ 18 years</li>
+                            <li><i class="fa-solid fa-check"></i> Indian Citizen</li>
+                            <li><i class="fa-solid fa-check"></i> Resident of Constituency</li>
+                        </ul>
+                    </div>
+
+                    <!-- Required Documents -->
+                    <div class="glass-card guide-card">
+                        <div class="card-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                        <h3>Required Documents</h3>
+                        <ul class="guide-list">
+                            <li><i class="fa-solid fa-file-image"></i> Passport Size Photo</li>
+                            <li><i class="fa-solid fa-file-shield"></i> Aadhaar Card</li>
+                            <li><i class="fa-solid fa-calendar-day"></i> Age Proof</li>
+                            <li><i class="fa-solid fa-house-chimney"></i> Address Proof</li>
+                        </ul>
+                    </div>
+
+                    <!-- Address Proof Examples -->
+                    <div class="glass-card guide-card">
+                        <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3>Address Proofs</h3>
+                        <div class="tags">
+                            <span class="tag">Utility Bill</span>
+                            <span class="tag">Rental Agreement</span>
+                            <span class="tag">Bank Statement</span>
+                            <span class="tag">Government ID</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Slides Guide -->
+                <div class="slides-guide animate-slide-up">
+                    <div class="slides-header">
+                        <h3><i class="fa-solid fa-presentation-screen"></i> Form-6 Registration Guide</h3>
+                        <p>A detailed slide deck walking you through every field and requirement of the registration process.</p>
+                    </div>
+                    <div class="glass-card slides-container">
+                        <iframe 
+                            src="https://docs.google.com/presentation/d/e/2PACX-1vRy7F2pi5CI-zs2a4lC6VVU-Di9TxdvIfsJgsG1fIamUYANWCt0KRHmhhNH0cVL_wvfu3tEpossz3-e/pubembed?start=false&loop=false&delayms=3000" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            mozallowfullscreen="true" 
+                            webkitallowfullscreen="true"
+                            title="Voter Registration (Form-6) Presentation Guide"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="slides-footer">
+                        <a href="https://docs.google.com/presentation/d/e/2PACX-1vRy7F2pi5CI-zs2a4lC6VVU-Di9TxdvIfsJgsG1fIamUYANWCt0KRHmhhNH0cVL_wvfu3tEpossz3-e/pub" target="_blank" class="btn-text">
+                            <span>Open Full Guide</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Registration Steps -->
+                <div class="steps-flow">
+                    <div class="step-item">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h4>Fill Form 6</h4>
+                            <p>Complete the application online via ECI portal.</p>
+                        </div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step-item">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h4>Attach Docs</h4>
+                            <p>Upload your ID, Age, and Address proofs.</p>
+                        </div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step-item">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h4>Verification</h4>
+                            <p>Booth Level Officer (BLO) verifies your details.</p>
+                        </div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step-item">
+                        <div class="step-num">04</div>
+                        <div class="step-content">
+                            <h4>Voter ID</h4>
+                            <p>Receive your EPIC card via registered post.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voting Journey Simulator Section -->
+    <section id="simulator" class="section bg-gradient-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Interactive Experience</span>
+                <h2>Voting Day <span>Simulator</span></h2>
+                <p>Experience the step-by-step process of casting your vote at a polling station.</p>
+            </div>
+
+            <div class="simulator-wrapper">
+                <div class="sim-steps-nav">
+                    <button class="sim-nav-btn active" data-sim="1">1. Entry</button>
+                    <button class="sim-nav-btn" data-sim="2">2. ID Check</button>
+                    <button class="sim-nav-btn" data-sim="3">3. The Ink</button>
+                    <button class="sim-nav-btn" data-sim="4">4. EVM Vote</button>
+                </div>
+
+                <div class="sim-content-area glass-card">
+                    <div class="sim-step active" id="sim-step-1">
+                        <div class="sim-visual"><i class="fa-solid fa-door-open"></i></div>
+                        <div class="sim-text">
+                            <h3>Step 1: Polling Booth Entry</h3>
+                            <p>Upon arrival at your designated polling station, join the queue. Security personnel will guide you to the entry point of your specific booth.</p>
+                            <button class="btn btn-secondary sim-next" data-next="2">Next: ID Verification</button>
+                        </div>
+                    </div>
+                    <div class="sim-step" id="sim-step-2">
+                        <div class="sim-visual"><i class="fa-solid fa-address-card"></i></div>
+                        <div class="sim-text">
+                            <h3>Step 2: ID & List Verification</h3>
+                            <p>The First Polling Officer will check your name on the electoral roll and verify your ID proof (EPIC or other allowed IDs).</p>
+                            <button class="btn btn-secondary sim-next" data-next="3">Next: Marking & Signature</button>
+                        </div>
+                    </div>
+                    <div class="sim-step" id="sim-step-3">
+                        <div class="sim-visual"><i class="fa-solid fa-pen-nib"></i></div>
+                        <div class="sim-text">
+                            <h3>Step 3: Indelible Ink & Register</h3>
+                            <p>The Second Polling Officer will mark your left forefinger with indelible ink, record your signature/thumb impression, and issue a voter slip.</p>
+                            <button class="btn btn-secondary sim-next" data-next="4">Next: Casting the Vote</button>
+                        </div>
+                    </div>
+                    <div class="sim-step" id="sim-step-4">
+                        <div class="sim-visual"><i class="fa-solid fa-box-archive"></i></div>
+                        <div class="sim-text">
+                            <h3>Step 4: Casting your Vote via EVM</h3>
+                            <p>Go to the voting compartment. Press the blue button against your candidate on the EVM. A 'beep' will sound, and you'll see the VVPAT slip verification.</p>
+                            <button class="btn btn-primary" onclick="location.href='#hero'">Back to Start</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Guides Section -->
+    <section id="videos" class="section bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Visual Learning</span>
+                <h2>Step-by-Step <span>Video</span> Guides</h2>
+                <p>Watch official guides to master the registration and voting journey.</p>
+            </div>
+
+            <div class="video-grid">
+                <!-- Registration Video -->
+                <div class="glass-card video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/BJCjsgEiQwg" title="Voter Registration Guide" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Registration Guide</h3>
+                        <p>A comprehensive walkthrough of the online voter registration process.</p>
+                    </div>
+                </div>
+
+                <!-- Voting Process Video -->
+                <div class="glass-card video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/YEu5Qv-VmRg" title="Voting Process Guide" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Voting Day Process</h3>
+                        <p>Learn exactly what happens at the polling booth on election day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Official ECI Services Section -->
+    <section id="eci" class="section">
+        <div class="container">
+            <div class="eci-grid">
+                <div class="glass-card eci-portal-card">
+                    <div class="eci-content">
+                        <div class="eci-text">
+                            <span class="portal-badge">Official Link</span>
+                            <h2>Official Voter Services Portal</h2>
+                            <p>Access the Election Commission of India's official portal for direct applications, status tracking, and electoral search.</p>
+                            <a href="https://voters.eci.gov.in/" target="_blank" class="btn btn-primary">
+                                <span>Visit ECI Portal</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                        <div class="eci-visual">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity / Firebase Visibility -->
+                <div class="glass-card activity-card">
+                    <div class="activity-header">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <h3>Your Recent Activity</h3>
+                    </div>
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-empty">
+                            <p>No recent queries yet. Start asking our AI assistant!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Floating UI -->
+    <div class="chat-overlay" id="chatOverlay">
+        <div class="chat-window glass-card">
+            <div class="chat-header">
+                <div class="chat-user-info">
+                    <div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="ai-details">
+                        <h4>Civic Assistant</h4>
+                        <span class="status-online">Online</span>
+                    </div>
+                </div>
+                <button class="close-chat" id="closeChatBtn" aria-label="Close Chat Window" tabindex="0"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-msg">
+                    <div class="msg-content">
+                        Hello! I am your AI Civic Assistant. I can help you with voter registration, voting procedures, and ECI guidelines. How can I assist you today?
+                    </div>
+                </div>
+                <!-- Suggested Actions -->
+                <div class="chat-suggestions">
+                    <button class="suggest-btn" data-query="Explain voter registration">Explain Registration</button>
+                    <button class="suggest-btn" data-query="How to vote">How to Vote</button>
+                    <button class="suggest-btn" data-query="What is Form 6?">What is Form 6?</button>
+                </div>
+            </div>
+
+            <div class="typing-indicator hidden" id="typingIndicator">
+                <span></span><span></span><span></span>
+            </div>
+
+            <form class="chat-input" id="chatForm" aria-label="Chat Input Form">
+                <input type="text" id="userInput" placeholder="Ask a question..." autocomplete="off" aria-label="Type your question here" tabindex="0">
+                <button type="submit" class="send-btn" aria-label="Send Message" tabindex="0"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-landmark-flag"></i>
+                    <span>Civic<span>Guide</span></span>
+                </div>
+                <p>&copy; 2024 CivicGuide. Educational platform following ECI Guidelines. Not an official government entity.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#hero">Back to Top</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyA32qPU0HM1Ttzs3OcJLB7SA0mb3gvcq7Y",
+            authDomain: "your-project.firebaseapp.com",
+            projectId: "your-project",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef"
+        };
+
+        try {
+            // Provide a graceful fallback when credentials are not configured
+            if (firebaseConfig.apiKey === "AIzaSyA32qPU0HM1Ttzs3OcJLB7SA0mb3gvcq7Y") {
+                console.warn("⚠️ Placeholder Firebase Config detected. Running in Demo Mode (No DB Logging). Please update index.html with your Firebase API keys.");
+                window.firebaseAuth = null;
+                window.authHeader = ""; // Unauthenticated fallback
+                // Disable recent queries UI
+                const activityList = document.getElementById("activityList");
+                if (activityList) {
+                    activityList.innerHTML = '<div class="activity-empty"><p>Firebase not configured. Setup keys to see activity.</p></div>';
+                }
+            } else {
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                window.firebaseAuth = auth;
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        const token = await user.getIdToken();
+                        window.authHeader = `Bearer ${token}`;
+                    } else {
+                        signInAnonymously(auth);
+                    }
+                });
+            }
+        } catch (e) {
+            console.warn("Firebase Init Error - Continuing without Firebase features.", e);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
