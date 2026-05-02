@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentWizardStep = 1;
     let quizScore = 0;
     let currentQuizIndex = 0;
-    const API_URL = 'https://smart-election-assistant-488041159564.us-central1.run.app/ask'; // Pointing to newly deployed backend
+    const API_URL = '/ask'; // Relative path for the same domain
 
     // --- Data Objects ---
     const timelineData = [
