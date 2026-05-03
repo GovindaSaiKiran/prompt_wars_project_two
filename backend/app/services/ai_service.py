@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 # Cache AI responses for identical questions to reduce latency and API costs.
 # Stores up to 100 items, expires after 10 minutes (600 seconds)
-ai_cache = TTLCache(maxsize=100, ttl=600)
+ai_cache: TTLCache[str, str] = TTLCache(maxsize=100, ttl=600)
 
 SYSTEM_PROMPT = """
 You are a highly professional, neutral, and educational Smart Election Assistant. 
