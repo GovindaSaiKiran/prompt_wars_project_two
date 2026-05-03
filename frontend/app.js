@@ -59,7 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="step-marker"></div>
                 <span class="step-name">${step.name}</span>
             `;
+            item.setAttribute('role', 'button');
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('aria-label', `View details for ${step.name} stage`);
             item.onclick = () => showTimelineDetail(idx);
+            item.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    showTimelineDetail(idx);
+                }
+            };
             wrapper.appendChild(item);
         });
     };
@@ -91,10 +100,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="acc-content">${item.a}</div>
             `;
+            accItem.setAttribute('role', 'button');
+            accItem.setAttribute('tabindex', '0');
+            accItem.setAttribute('aria-expanded', 'false');
             accItem.onclick = () => {
                 const isActive = accItem.classList.contains('active');
-                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                if (!isActive) accItem.classList.add('active');
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.setAttribute('aria-expanded', 'false');
+                });
+                if (!isActive) {
+                    accItem.classList.add('active');
+                    accItem.setAttribute('aria-expanded', 'true');
+                }
+            };
+            accItem.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    accItem.click();
+                }
             };
             container.appendChild(accItem);
         });

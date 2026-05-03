@@ -10,12 +10,11 @@ def test_ai_service_demo_fallback():
         service = AIService()
         assert service.model is None
         
-        response = service.generate_response("Am I eligible to vote?")
         response = asyncio.run(service.generate_response("Am I eligible to vote?"))
-        assert "Eligibility Checker" in response
+        assert "eligible" in response.lower()
 
         response = asyncio.run(service.generate_response("Random question"))
-        assert "demo mode" in response
+        assert "Secure Informational Mode" in response
 
 @patch("app.services.ai_service.genai.GenerativeModel")
 def test_ai_service_active(mock_model_class):

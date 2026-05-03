@@ -1,7 +1,7 @@
 import logging
 import asyncio
 import google.generativeai as genai
-from cachetools import TTLCache, cached
+from cachetools import TTLCache
 from fastapi import HTTPException
 from app.utils.config import settings
 
@@ -58,12 +58,15 @@ class AIService:
             logger.error(f"Failed to initialize Gemini model: {e}")
             self.model = None
 
-    @cached(cache=ai_cache)
     async def generate_response(self, user_question: str) -> str:
         """
         Generates a response using the Gemini API. 
         Responses are cached based on the input question to optimize efficiency.
         """
+        # Async-safe cache: check for cached result first
+        if user_question in ai_cache:
+            return ai_cache[user_question]
+
         lower_q = user_question.lower()
         
         # Expanded mock/demo responses for robustness
@@ -104,7 +107,8 @@ class AIService:
             answer_text = response.text.strip()
             if not answer_text:
                 raise ValueError("Received empty response from Gemini API.")
-                
+
+            ai_cache[user_question] = answer_text
             return answer_text
 
         except Exception as e:

@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let isProcessing = false;
     let activityLog = [];
 
+    // Sanitize HTML to prevent XSS
+    const sanitizeHTML = (str) =>
+      str.replace(/&/g,'&amp;').replace(/</g,'&lt;')
+         .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
     // Utility: Debounce function to prevent redundant calls
     const debounce = (func, wait) => {
         let timeout;
@@ -87,8 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const openChatBtn = document.getElementById('openChatBtn');
     const closeChatBtn = document.getElementById('closeChatBtn');
 
-    openChatBtn.onclick = () => chatOverlay.classList.add('open');
-    closeChatBtn.onclick = () => chatOverlay.classList.remove('open');
+    openChatBtn.onclick = () => {
+        chatOverlay.classList.add('open');
+        setTimeout(() => {
+            const input = document.getElementById('userInput');
+            if (input) input.focus();
+        }, 100);
+    };
+    closeChatBtn.onclick = () => {
+        chatOverlay.classList.remove('open');
+        openChatBtn.focus();
+    };
 
     const openChatAndAsk = (question) => {
         chatOverlay.classList.add('open');
@@ -137,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const appendMessage = (text, type) => {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${type}-msg`;
-        msgDiv.innerHTML = `<div class="msg-content">${text}</div>`;
+        msgDiv.innerHTML = `<div class="msg-content">${sanitizeHTML(text)}</div>`;
         chatMessages.appendChild(msgDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     };
@@ -207,7 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
         activityLog.forEach(item => {
             const div = document.createElement('div');
             div.className = 'activity-item animate-slide-up';
-            div.innerHTML = `<span class="query">${item.query}</span><span class="time">${item.time}</span>`;
+            div.innerHTML = `<span class="query">${sanitizeHTML(item.query)}</span>
+                     <span class="time">${item.time}</span>`;
             fragment.appendChild(div);
         });
         

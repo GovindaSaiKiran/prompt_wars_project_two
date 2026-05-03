@@ -13,8 +13,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Google Analytics GA4 -->
+    <script async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLACEHOLDER');
+      // Track AI assistant usage
+      function trackCivicEvent(action, category, label) {
+        gtag('event', action, {event_category: category, event_label: label});
+      }
+    </script>
 </head>
 <body>
+    <a href="#hero" class="skip-link">Skip to main content</a>
     <!-- Background Accents -->
     <div class="glow-bg">
         <div class="blob blob-1"></div>
@@ -333,7 +348,9 @@
     </section>
 
     <!-- AI Assistant Floating UI -->
-    <div class="chat-overlay" id="chatOverlay">
+    <div class="chat-overlay" id="chatOverlay"
+         role="dialog" aria-modal="true"
+         aria-label="AI Civic Assistant Chat">
         <div class="chat-window glass-card">
             <div class="chat-header">
                 <div class="chat-user-info">
@@ -346,7 +363,7 @@
                 <button class="close-chat" id="closeChatBtn" aria-label="Close Chat Window" tabindex="0"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
             </div>
             
-            <div class="chat-messages" id="chatMessages">
+            <div class="chat-messages" id="chatMessages" aria-live="polite" aria-atomic="false">
                 <div class="message ai-msg">
                     <div class="msg-content">
                         Hello! I am your AI Civic Assistant. I can help you with voter registration, voting procedures, and ECI guidelines. How can I assist you today?
@@ -432,5 +449,7 @@
         }
     </script>
     <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script src="content.js"></script>
 </body>
 </html>

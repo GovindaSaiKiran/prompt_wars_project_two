@@ -96,18 +96,28 @@ Follow these exact commands using the Google Cloud CLI.
    gcloud config set project proven-serenity-494705-u8
    ```
 
-3. **Deploy from Source**:
-   *Note: Ensure your `GEMINI_API_KEY` is ready. We will set it as an environment variable during deployment.*
+3. **Set up Secret Manager** (recommended for production):
+   ```bash
+   echo -n "your-key" | gcloud secrets create gemini-api-key --data-file=-
+   ```
+   Grant access to the Cloud Run service account:
+   ```bash
+   gcloud secrets add-iam-policy-binding gemini-api-key \
+     --member="serviceAccount:YOUR_PROJECT_NUMBER-compute@developer.gserviceaccount.com" \
+     --role="roles/secretmanager.secretAccessor"
+   ```
+
+4. **Deploy from Source**:
+   *Note: We use Secret Manager to securely inject the API key at runtime.*
    ```bash
    gcloud run deploy smart-election-assistant \
      --source . \
      --region us-central1 \
      --allow-unauthenticated \
-     --set-env-vars GEMINI_API_KEY="your_actual_api_key_here"
+     --set-secrets GEMINI_API_KEY=gemini-api-key:latest
    ```
-   *(For better security in production, consider using Google Secret Manager via `--set-secrets`)*
 
-4. **Visit your live app**:
+5. **Visit your live app**:
    Click the Service URL provided in the terminal output.
 
 ## Future Improvements

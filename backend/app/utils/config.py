@@ -13,7 +13,10 @@ class Settings(BaseSettings):
     FIREBASE_PROJECT_ID: Optional[str] = None
     
     # CORS
-    BACKEND_CORS_ORIGINS: list[str] = ["*"]
+    BACKEND_CORS_ORIGINS: list[str] = [
+        "https://smart-election-assistant-488041159564.us-central1.run.app",
+        "http://localhost:8000"
+    ]
     
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

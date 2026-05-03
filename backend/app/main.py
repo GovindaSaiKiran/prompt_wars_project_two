@@ -45,10 +45,10 @@ def create_app() -> FastAPI:
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; "
             "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://docs.google.com https://accounts.google.com https://*.google.com; "
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://www.gstatic.com https://www.youtube.com https://docs.google.com https://apis.google.com; "
+            "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.gstatic.com https://www.youtube.com https://docs.google.com https://apis.google.com https://www.googletagmanager.com; "
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; "
             "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; "
-            "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com; "
+            "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://www.google-analytics.com; "
             "img-src 'self' data: https:;"
         )
         return response

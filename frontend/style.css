@@ -982,6 +982,16 @@ body {
 
 .hidden { display: none; }
 
+/* Skip Link (Accessibility) */
+.skip-link {
+    position: absolute; top: -100px; left: 0;
+    background: #6d28d9; color: #fff; padding: 10px 20px;
+    z-index: 10000; border-radius: 0 0 8px 0;
+    font-weight: 600; text-decoration: none;
+    transition: top 0.2s ease;
+}
+.skip-link:focus { top: 0; }
+
 /* Responsive */
 @media (max-width: 1024px) {
     .hero {
