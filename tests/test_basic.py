@@ -11,7 +11,7 @@ def test_security_headers_present():
     assert "strict-transport-security" in headers
     assert "x-frame-options" in headers
     assert "content-security-policy" in headers
-    assert "unsafe-eval" not in headers.get("content-security-policy","")
+    assert "unsafe-eval" not in headers.get("content-security-policy", "")
 
 def test_ask_rejects_oversized_input():
     response = client.post("/ask", json={"question": "a" * 501})

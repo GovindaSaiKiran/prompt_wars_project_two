@@ -1,5 +1,4 @@
 """Tests to ensure 100% coverage across edge cases and error handling."""
-import asyncio
 import os
 from unittest.mock import patch, MagicMock
 import pytest
@@ -9,8 +8,6 @@ from app.main import create_app
 from app.services.ai_service import AIService
 from app.services.db_service import DBService
 from app.utils.auth import verify_token
-from app.routes.routes import ask_assistant
-from app.models.schemas import AskRequest
 
 
 # ---------------------------------------------------------
@@ -19,13 +16,12 @@ from app.models.schemas import AskRequest
 def test_create_app_no_frontend_dir(caplog):
     """Test create_app when frontend directory is missing."""
     with patch("os.path.exists", return_value=False):
-        app = create_app()
+        create_app()
         assert "Frontend directory not found" in caplog.text
 
 
 def test_google_cloud_logging_success():
     """Test successful Google Cloud Logging setup."""
-    import sys
     import importlib
     import app.main
 
@@ -43,7 +39,6 @@ def test_google_cloud_logging_success():
 def test_google_cloud_logging_fallback(caplog):
     """Test logging fallback when K_SERVICE is set but client fails."""
     # We simulate the fallback by reloading the main module with mocked env
-    import sys
     import importlib
     import app.main
 
