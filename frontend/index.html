@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google Analytics GA4 — Replace G-XXXXXXXXXX with your Measurement ID -->
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7G4D03CBLB"></script>
     <script>
-      // Analytics disabled until a valid Measurement ID is configured.
-      // To enable: uncomment the gtag script tag and replace the placeholder.
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7G4D03CBLB');
+
       function trackCivicEvent(action, category, label) {
         gtag('event', action, {event_category: category, event_label: label});
       }
