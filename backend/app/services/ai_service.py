@@ -53,7 +53,7 @@ class AIService:
             )
         try:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-2.0-flash')
+            self.model = genai.GenerativeModel('gemini-2.5-flash')
             logger.info("✅ Gemini model initialized successfully.")
         except Exception as e:
             logger.error(f"❌ Failed to initialize Gemini model: {e}")
