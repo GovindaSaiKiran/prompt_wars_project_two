@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     openChatBtn.onclick = () => {
         chatOverlay.classList.add('open');
+        chatOverlay.setAttribute('aria-hidden', 'false');
         setTimeout(() => {
             const input = document.getElementById('userInput');
             if (input) input.focus();
@@ -101,8 +102,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     closeChatBtn.onclick = () => {
         chatOverlay.classList.remove('open');
+        chatOverlay.setAttribute('aria-hidden', 'true');
         openChatBtn.focus();
     };
+
+    // Keyboard: Escape closes chat, Tab traps focus inside
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && chatOverlay.classList.contains('open')) {
+            closeChatBtn.click();
+        }
+        // Focus trap: keep Tab inside chat when open
+        if (e.key === 'Tab' && chatOverlay.classList.contains('open')) {
+            const focusable = chatOverlay.querySelectorAll('button, input, [tabindex]');
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
 
     const openChatAndAsk = (question) => {
         chatOverlay.classList.add('open');
@@ -125,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers['Authorization'] = window.authHeader;
             }
 
+            chatMessages.setAttribute('aria-busy', 'true');
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: headers,
@@ -145,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             handleAiError();
         } finally {
             isProcessing = false;
+            chatMessages.setAttribute('aria-busy', 'false');
         }
     };
 

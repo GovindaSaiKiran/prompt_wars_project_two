@@ -13,16 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google Analytics GA4 -->
-    <script async
-      src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER">
-    </script>
+    <!-- Google Analytics GA4 — Replace G-XXXXXXXXXX with your Measurement ID -->
     <script>
+      // Analytics disabled until a valid Measurement ID is configured.
+      // To enable: uncomment the gtag script tag and replace the placeholder.
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PLACEHOLDER');
-      // Track AI assistant usage
       function trackCivicEvent(action, category, label) {
         gtag('event', action, {event_category: category, event_label: label});
       }
@@ -44,7 +40,7 @@
                 <i class="fa-solid fa-landmark-flag"></i>
                 <span>Civic<span>Guide</span></span>
             </div>
-            <ul class="nav-links" role="navigation" aria-label="Main Navigation">
+            <ul class="nav-links" role="list" aria-label="Main Navigation">
                 <li><a href="#hero">Start</a></li>
                 <li><a href="#videos">Learn</a></li>
                 <li><a href="#apply">Apply</a></li>
@@ -377,7 +373,7 @@
                 </div>
             </div>
 
-            <div class="typing-indicator hidden" id="typingIndicator">
+            <div class="typing-indicator hidden" id="typingIndicator" role="status" aria-label="AI is typing">
                 <span></span><span></span><span></span>
             </div>
 
@@ -412,17 +408,17 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         
         const firebaseConfig = {
-            apiKey: "AIzaSyCKaq0B38jGeNYTtROavMYhfw75vNBAoMk",
+            apiKey: "YOUR_FIREBASE_API_KEY",
             authDomain: "your-project.firebaseapp.com",
             projectId: "your-project",
             storageBucket: "your-project.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456789:web:abcdef"
+            messagingSenderId: "000000000000",
+            appId: "1:000000000000:web:placeholder"
         };
 
         try {
             // Provide a graceful fallback when credentials are not configured
-            if (firebaseConfig.apiKey === "AIzaSyA32qPU0HM1Ttzs3OcJLB7SA0mb3gvcq7Y") {
+            if (firebaseConfig.apiKey === "YOUR_FIREBASE_API_KEY") {
                 console.warn("⚠️ Placeholder Firebase Config detected. Running in Demo Mode (No DB Logging). Please update index.html with your Firebase API keys.");
                 window.firebaseAuth = null;
                 window.authHeader = ""; // Unauthenticated fallback
