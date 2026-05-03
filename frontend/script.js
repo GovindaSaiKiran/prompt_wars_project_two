@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 appendMessage(data.answer, 'ai');
             } else {
-                handleAiError();
+                handleAiError(response.status);
             }
         } catch (error) {
             console.error('AI API Error:', error);
@@ -165,9 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     };
 
-    const handleAiError = () => {
-        const fallbackMsg = "I'm currently experiencing some connectivity issues. However, you can find detailed information about voter registration in the 'Registration Process' section above or visit the official ECI portal at voters.eci.gov.in.";
-        appendMessage(fallbackMsg, 'ai');
+    const handleAiError = (status) => {
+        let msg = "Something went wrong. Please try again.";
+        if (status === 503) msg = "AI service is starting up. Try again in 30 seconds.";
+        if (status === 429) msg = "Too many requests. Please wait a moment.";
+        if (status === 400) msg = "Your question was flagged. Please rephrase it.";
+        appendMessage(msg, 'ai');
     };
 
     const debouncedSubmit = debounce((text) => {
